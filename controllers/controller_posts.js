@@ -8,10 +8,10 @@ function index(req, res) {
     //Inizialmente, il posts filtrato corrisponde a quello originale
     let filteredPosts = posts;
 
-    // Se la richiesta contiene un filtro, allora filtriamo il menu
-    if(req.query.tags){
+    // Se la richiesta contiene un filtro, allora filtriamo il posts
+    if(req.query.tag){
         filteredPosts = posts.filter(
-            post => post.tags.includes(req.query.tags)
+            post => post.tags.includes(req.query.tag)
         );
     }
     
@@ -78,7 +78,7 @@ function destroy(req, res) {
     posts.splice(posts.indexOf(post), 1);
 
     // log di riscontro di check su aggiornamento dati
-    console.log(posts);
+    console.log(posts); 
 
     // ritorno la risposta positiva di avvenuta cancellazione
     res.sendStatus(204);

@@ -21,9 +21,3 @@
 
 14 creiamo una cartella controllers al suo interno aggiungiamo un file js dove aggiungiamo tutte le funzioni che dovranno eseguire le nostre rotte
 
-
-
-
-
-
-
