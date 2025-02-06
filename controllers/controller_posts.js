@@ -4,9 +4,19 @@ const posts = require('../data/data_posts');
 // funzione index
 function index(req, res) {
     // res.send('visualizza tutti gli elementi')
+
+    //Inizialmente, il posts filtrato corrisponde a quello originale
+    let filteredPosts = posts;
+
+    // Se la richiesta contiene un filtro, allora filtriamo il menu
+    if(req.query.tags){
+        filteredPosts = posts.filter(
+            post => post.tags.includes(req.query.tags)
+        );
+    }
     
     // restituisce l'array di oggetti in formato json
-    res.json(posts)
+    res.json(filteredPosts);
 }
 // funzione show
 function show(req, res) {
