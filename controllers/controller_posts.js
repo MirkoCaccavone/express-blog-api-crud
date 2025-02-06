@@ -27,6 +27,18 @@ function show(req, res) {
 
     // cerchiamo il post tramite id
     const post = posts.find(post => post.id === id);
+
+    // controlliamo se il parametro inserito esiste
+    if(!post) {
+        // ritorno lo stato di errore 404, non trovato
+        res.status(404);
+
+        // ritorno un messaggio di errore (formato json)
+        return res.json({
+            error: "Not Found",
+            message: "Pizza non trovata"
+        })
+    }
         // Restituiamolo sotto forma di JSON   
         res.json(post);
 }
@@ -49,6 +61,18 @@ function destroy(req, res) {
 
     // cerchiamo il post tramite id
     const post = posts.find(post => post.id === id);
+
+    // controlliamo se il parametro inserito esiste
+    if(!post) {
+        // ritorno lo stato di errore 404, non trovato
+        res.status(404);
+
+        // ritorno un messaggio di errore (formato json)
+        return res.json({
+            error: "Not Found",
+            message: "Pizza non trovata"
+        })
+    }
 
     // cancello il post
     posts.splice(posts.indexOf(post), 1);
