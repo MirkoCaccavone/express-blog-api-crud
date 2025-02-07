@@ -1,7 +1,7 @@
 // importiamo il file data_posts
 const posts = require('../data/data_posts');
 
-// funzione index
+// funzione INDEX
 function index(req, res) {
     // res.send('visualizza tutti gli elementi')
 
@@ -18,7 +18,9 @@ function index(req, res) {
     // restituisce l'array di oggetti in formato json
     res.json(filteredPosts);
 }
-// funzione show
+
+
+// funzione SHOW
 function show(req, res) {
     // res.send('visualizza un elemento')
 
@@ -42,7 +44,10 @@ function show(req, res) {
         // Restituiamolo sotto forma di JSON   
         res.json(post);
 }
-// funzione store
+
+
+
+// funzione STORE
 function store(req, res) {
     // res.send('Creazione nuovo post ')
     // creiamo il nuovo id incrementando l'ultimo presente
@@ -70,12 +75,46 @@ function store(req, res) {
 
 }
 
-// funzione update
+
+
+// funzione UPDATE
 function update(req, res) {
-    res.send('Lista dei post ' + req.params.id);
+    // res.send('Lista dei post ' + req.params.id);
+
+    // recuperiamo l'id dall' URL e trasformiamolo in numero
+    const id = parseInt(req.params.id)
+
+    // cerchiamo il post tramite id
+    const post = posts.find(post => post.id === id);
+
+    // controlliamo se il parametro inserito esiste
+    if(!post) {
+        // ritorno lo stato di errore 404, non trovato
+        res.status(404);
+
+        // ritorno un messaggio di errore (formato json)
+        return res.json({
+            error: "Not Found",
+            message: "Pizza non trovata"
+        })
+    }
+
+    //  modifichiamo i dati del post trovato
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    // stampiamo in console i posts
+    console.log(posts);
+
+    // ritorniamo l'oggetto modificato
+    res.json(post);
+
+
 }
 
-// funzione destroy
+// funzione DESTROY
 function destroy(req, res) {
     // res.send('Cancella post post' + req.params.id);
 
