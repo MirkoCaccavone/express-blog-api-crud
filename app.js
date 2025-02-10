@@ -6,10 +6,15 @@ const port = 3000
 // importo il router
 const postsRouter = require('./routers/posts');
 
+// importo i middleware
+const notFound = require('./middleware/notFound');
+const errorsHandler = require('./middleware/errorsHandler');
+
 // Serve i file statici dalla cartella 'public'
 app.use(express.static('public'));
 
 // registro il body-parser per "application/json"
+// interpreta quello che sarà passato come file JSON
 app.use(express.json());
 
 // Gestisce la route principale ('/')
@@ -20,6 +25,12 @@ app.get('/', (req, res) => {
 
 // Usa il router per le richieste alla route '/posts'
 app.use("/posts", postsRouter)
+
+// utilizzo middleware di gestione not found 404
+app.use(notFound);
+
+// utilizzo middleware di gestione errore server
+app.use(errorsHandler);
 
 // Avvia il server sulla porta specificata
 app.listen(port, () => {
