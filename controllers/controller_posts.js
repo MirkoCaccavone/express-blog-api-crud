@@ -38,7 +38,7 @@ function show(req, res) {
         // ritorno un messaggio di errore (formato json)
         return res.json({
             error: "Not Found",
-            message: "Pizza non trovata"
+            message: "Post non trovato"
         })
     }
         // Restituiamolo sotto forma di JSON   
@@ -81,6 +81,8 @@ function store(req, res) {
 function update(req, res) {
     // res.send('Lista dei post ' + req.params.id);
 
+// ERRORE PER TESTARE L'errorsHandler
+dgsgdgdgdgh;
     // recuperiamo l'id dall' URL e trasformiamolo in numero
     const id = parseInt(req.params.id)
 
@@ -95,7 +97,7 @@ function update(req, res) {
         // ritorno un messaggio di errore (formato json)
         return res.json({
             error: "Not Found",
-            message: "Pizza non trovata"
+            message: "Post non trovato"
         })
     }
 
@@ -132,7 +134,7 @@ function destroy(req, res) {
         // ritorno un messaggio di errore (formato json)
         return res.json({
             error: "Not Found",
-            message: "Pizza non trovata"
+            message: "Post non trovato"
         })
     }
 
