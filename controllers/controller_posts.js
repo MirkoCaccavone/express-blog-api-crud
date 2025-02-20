@@ -23,6 +23,7 @@ function index(req, res) {
 // funzione SHOW
 function show(req, res) {
     // res.send('visualizza un elemento')
+    
 
     // recuperiamo l'id dall' URL e trasformiamolo in numero
     const id = parseInt(req.params.id)
@@ -81,8 +82,8 @@ function store(req, res) {
 function update(req, res) {
     // res.send('Lista dei post ' + req.params.id);
 
-// ERRORE PER TESTARE L'errorsHandler
-dgsgdgdgdgh;
+    // ERRORE PER TESTARE L'errorsHandler
+    ashdhdhsh;
     // recuperiamo l'id dall' URL e trasformiamolo in numero
     const id = parseInt(req.params.id)
 

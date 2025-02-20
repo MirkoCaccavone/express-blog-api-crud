@@ -2,6 +2,12 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const cors = require("cors")
+
+// middleware per il CORS
+app.use(cors({
+    origin: 'http://localhost:5174'
+}));
 
 // importo il router
 const postsRouter = require('./routers/posts');
